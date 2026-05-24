@@ -4,6 +4,8 @@ A template repository for running a local autonomous mini-SWE-agent development 
 
 The stack keeps model inference local through Ollama, runs mini-SWE-agent inside the Actions runner container, and writes agent changes to a dedicated development branch instead of pushing directly to `main`.
 
+For a full clean-room setup guide, see [step-by-step.md](step-by-step.md).
+
 ## How it works
 
 1. A trusted user creates an issue with the **Agent Task** issue template.
