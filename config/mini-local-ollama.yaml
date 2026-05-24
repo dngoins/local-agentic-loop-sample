@@ -1,0 +1,20 @@
+agent:
+  mode: yolo
+  step_limit: 30
+  cost_limit: 0
+
+model:
+  model_name: "ollama/qwen2.5-coder:7b"
+  cost_tracking: "ignore_errors"
+  model_kwargs:
+    api_base: "http://ollama:11434"
+    temperature: 0
+    drop_params: true
+
+environment:
+  env:
+    PAGER: cat
+    MANPAGER: cat
+    LESS: -R
+    PIP_PROGRESS_BAR: "off"
+    TQDM_DISABLE: "1"
