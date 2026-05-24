@@ -1,0 +1,45 @@
+name: Agent Task
+description: Task for autonomous mini-SWE-agent
+title: "[Agent]: "
+labels:
+  - agent:candidate
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What needs to be fixed, added, or changed?
+      placeholder: Describe the task clearly.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: What must be true when this is done?
+      placeholder: |
+        - [ ] The behavior is implemented or fixed
+        - [ ] Tests are added or updated if needed
+        - [ ] Existing tests pass
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Relevant files, logs, examples, or constraints.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: risk
+    attributes:
+      label: Risk level
+      options:
+        - low
+        - medium
+        - high
+    validations:
+      required: true
