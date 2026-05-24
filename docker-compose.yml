@@ -1,0 +1,30 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - /mnt/ollama-usb/ollama:/root/.ollama
+
+  github-runner:
+    build:
+      context: ./runner
+      args:
+        RUNNER_VERSION: "2.328.0"
+    container_name: github-mini-swe-runner
+    restart: unless-stopped
+    depends_on:
+      - ollama
+    environment:
+      GH_RUNNER_REPO_URL: "${GH_RUNNER_REPO_URL}"
+      GH_RUNNER_TOKEN: "${GH_RUNNER_TOKEN}"
+      RUNNER_NAME: "${RUNNER_NAME}"
+      RUNNER_LABELS: "self-hosted,linux,docker,mini-swe-agent"
+    volumes:
+      - ./config:/opt/agent-config:ro
+      - runner-work:/actions-runner/_work
+
+volumes:
+  runner-work:
